@@ -1,0 +1,107 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu"></ion-icon>
+    </button>
+    <ion-title *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">Produtos</ion-title>
+
+   
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="adicionar()">
+
+        <ion-icon name="add"></ion-icon>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+  <ion-searchbar placeholder="Pesquisar" showCancelButton="true" 
+  (ionCancel)="isSearchbarOpened=false"
+  (ionInput)="getProdutos($event)">
+  </ion-searchbar>
+</ion-header>
+
+<ion-content>
+  
+
+  <ion-list style="margin-top: 20px;" [virtualScroll]="produtos" no-lines>
+    <ion-item-sliding *virtualItem="let item" >
+
+      <ion-item>
+        <ion-thumbnail item-start>
+                  <img class="img" *ngIf="item.foto == ''" src="../../assets/imgs/sem-img.png" >
+                  <img class="img" *ngIf="item.foto != ''" src="{{url+item.foto}}" >
+        </ion-thumbnail>
+      
+        <h2 style="font-size:large; text-transform: uppercase;">{{item.nome}} </h2>
+        <h4  style="font-size:13px; text-transform:capitalize; color: darkgray;">• {{item.categoria}}</h4>
+        <ion-badge [color]="item.estoque <= 3 ? 'dark' : 'verde'" outline >QTD: {{item.estoque}} </ion-badge>
+
+        <h3 item-end style="color: rgb(207, 228, 17);">{{item.valor_venda | currency: 'BRL'}} </h3>
+        <ion-icon style="color: rgb(18, 153, 194);" item-end name="ios-arrow-forward"></ion-icon>
+      </ion-item>
+      
+      
+      <ion-item-options side="left" no-lines>
+
+        <button ion-button color="vermelho" (click)="detalhe(item.id,
+                                                              item.nome,
+                                                              item.barra,
+                                                              item.codigo,
+                                                              item.qtd,
+                                                              item.valor_compra,
+                                                              item.valor_venda,
+                                                              item.estoque,
+                                                              item.foto,
+                                                              item.aplicacao,
+                                                              item.categorias_id
+                                                  
+
+                                                        )">
+                                                        <i style="font-size: xx-large; padding: 6px;" class="fas fa-images"></i>
+        </button>
+
+      </ion-item-options>
+
+      <ion-item-options side="right">
+
+        <button ion-button color="red" (click)="galeria(item.id)" >
+          <ion-icon name="md-camera"></ion-icon>
+        </button>
+
+
+        <button ion-button color="danger" (click)="editar(item.id,
+                                                          item.nome,
+                                                          item.barra,
+                                                          item.codigo,
+                                                          item.qtd,
+                                                          item.valor_compra,
+                                                          item.valor_venda,
+                                                          item.estoque,
+                                                          item.foto,
+                                                          item.aplicacao,
+                                                          item.categorias_id
+                                                                                                          
+                                                        )">
+                                                        <ion-icon name="brush"></ion-icon>
+        </button>
+
+
+        <button ion-button color="dark" (click)="delete(item.id)" >
+          <ion-icon name="trash"></ion-icon>
+        </button>
+
+      </ion-item-options>
+
+
+    </ion-item-sliding>
+  </ion-list>
+
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)"  >
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="CARREGANDO...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>

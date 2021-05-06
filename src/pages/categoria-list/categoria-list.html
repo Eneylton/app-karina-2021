@@ -1,0 +1,95 @@
+<ion-header no-border>
+  <ion-navbar trasparent>
+    <button ion-button menuToggle>
+      <ion-icon name="menu" class="cor"></ion-icon>
+    </button>
+    <ion-title *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">Categoria</ion-title>
+
+    <ion-searchbar placeholder="Pesquisar" *ngIf="isSearchbarOpened" showCancelButton="true"
+      (ionCancel)="isSearchbarOpened=false" (ionInput)="getCategorias($event)">
+    </ion-searchbar>
+    <ion-buttons end>
+
+      <button ion-button icon-only *ngIf="!isSearchbarOpened" (click)="isSearchbarOpened=true">
+
+        <ion-icon class="cor2" name="search"></ion-icon>
+      </button>
+
+      <button ion-button icon-only (click)="adicionar()">
+        <ion-icon name="add"></ion-icon>
+      </button>
+
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-refresher (ionRefresh)="doRefresh($event)">
+
+    <ion-refresher-content pullingIcon="arrow-dropdown" pullingText="Pull to refresh" refreshingSpinner="circles"
+      refreshingText="Atualizando...">
+
+    </ion-refresher-content>
+
+  </ion-refresher>
+
+
+  <ion-list style="margin-top: 20px;">
+    <ion-item-sliding *ngFor="let item of categorias ">
+
+
+      <ion-item>
+        
+        <ion-avatar item-start>
+          <img *ngIf="item.foto == null" src="../../assets/imgs/sem-img.png">
+          <img *ngIf="item.foto != null" src="{{url+item.foto}}">
+        </ion-avatar>
+
+        <h3>{{item.nome}}</h3>
+        <p>07842{{item.id}}</p>
+      
+      </ion-item>
+
+      <ion-item-options side="left">
+
+        <button ion-button color="light" (click)="detalhe(item.id,
+                                                        item.nome,
+                                                        item.foto
+                                                        )">
+                                                        <i style="font-size: 20px; padding: 6px;" class="fas fa-images"></i>
+        </button>
+
+      </ion-item-options>
+
+      <ion-item-options side="right">
+
+
+        <button ion-button color="danger" (click)="editar(item.id,
+                                                          item.nome,
+                                                          item.foto
+                                                          )">
+                                                           <ion-icon name="brush"></ion-icon>
+        </button>
+
+
+        <button ion-button color="dark" (click)="delete(item.id)">
+          <ion-icon name="trash"></ion-icon>
+        </button>
+
+      </ion-item-options>
+
+
+    </ion-item-sliding>
+  </ion-list>
+
+
+  <ion-infinite-scroll threshold="100px" (ionInfinite)="loadData($event)">
+    <ion-infinite-scroll-content loadingSpinner="bubbles" loadingText="CARREGANDO...">
+    </ion-infinite-scroll-content>
+  </ion-infinite-scroll>
+
+
+</ion-content>

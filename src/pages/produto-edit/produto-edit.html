@@ -1,0 +1,106 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-title>Produto</ion-title>
+    <ion-buttons end>
+
+      <button ion-button icon-only (click)="editar()">
+  
+        <ion-icon name="md-checkmark"></ion-icon>
+      </button>
+  
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-grid>
+    <ion-row>
+
+      <ion-col col-12>
+        <ion-item no-lines>
+          <ion-thumbnail item-start>
+            <img src="{{url+foto}}" *ngIf="base64Image == ''"   >
+            <img src="{{base64Image}}" *ngIf="base64Image != ''"   >
+          </ion-thumbnail>
+          <h2>Selecione uma imagem</h2>
+          <button ion-button block (click)="presentActionSheet()" color="danger">
+             UPLOAND
+          </button>
+        </ion-item>
+      </ion-col>
+
+      <ion-col col-12>
+        <ion-item>
+       
+        <ion-input placeholder="Código" [(ngModel)]="codigo" type="text"></ion-input>
+       
+        </ion-item>
+        
+        <ion-row>
+          <ion-col col-9>
+            <ion-item   *ngIf="barra == ''">
+
+              <ion-input style="margin-left:-5px" placeholder="Código de Barras" [(ngModel)]="scanerData.text" type="text"></ion-input>
+
+            </ion-item>
+
+            <ion-item   *ngIf="barra != ''">
+
+              <ion-input style="margin-left:-5px" placeholder="Código de Barras" [(ngModel)]="barra" type="text"></ion-input>
+
+            </ion-item>
+           </ion-col>
+           <ion-col col-3>
+            <ion-item no-lines>
+
+        
+              <button ion-button item-start outline color="danger" (click)="scan()"><i class="fa fa-barcode" aria-hidden="true"></i></button>
+           
+
+            </ion-item>
+           </ion-col>
+        </ion-row>
+
+        <ion-item>
+          <ion-input style="text-transform: uppercase;" placeholder="Nome" [(ngModel)]="nome" type="text"></ion-input>
+        </ion-item>
+
+        
+        <ion-item>
+       
+          <ion-input placeholder="Valor de Compra" [(ngModel)]="valor_compra" type="text"></ion-input>
+         
+        </ion-item>
+
+        <ion-item>
+       
+          <ion-input placeholder="Valor de Venda" [(ngModel)]="valor_venda" type="text"></ion-input>
+         
+        </ion-item>
+
+        <ion-item>
+       
+          <ion-input placeholder="Aplicação" [(ngModel)]="aplicacao" type="text"></ion-input>
+         
+        </ion-item>
+        <ion-item>
+       
+          <ion-input placeholder="Quantidade" [(ngModel)]="estoque" type="text"></ion-input>
+         
+        </ion-item>
+
+        <ion-item>
+          <ion-label style="font-size: 16px; margin-left: 9px; font-family:Open Sans;">Categoria</ion-label>
+          <ion-select [(ngModel)]="categorias_id" >
+            <ion-option *ngFor="let item of categorias; Index as i" [selected]="i" value="{{item.id}}">
+              <h3 style="font-size: 16px; margin-left: 9px; font-family:Open Sans !important;"> {{item.nome}} </h3></ion-option>
+          </ion-select>
+        </ion-item>  
+
+       
+      </ion-col>
+    </ion-row>
+  </ion-grid>
+</ion-content>

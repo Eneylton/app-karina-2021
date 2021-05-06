@@ -1,0 +1,55 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-title>Galeria</ion-title>
+    <ion-buttons end>
+
+      <button ion-button icon-only  (click)="cadastrar()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+<ion-content padding>
+
+<ion-item no-lines *ngIf="base64Image != ''">
+ 
+  <ion-grid fixed>
+    <ion-row>
+      <ion-col col-6 *ngFor="let item Of fotos; let id = index">
+        <ion-card class="block">
+
+          <ion-icon name="md-close-circle" class="deleteIcon" (click)="deleteImg(id)"></ion-icon>
+
+          <img src="{{item}}" *ngIf="item" imageViewer >
+
+        </ion-card>
+      
+      
+      </ion-col>
+
+      <ion-col col-6> <img src="../../assets/imgs/hu.png" (click)="presentActionSheet()"></ion-col>
+    </ion-row>
+  </ion-grid>
+
+</ion-item>
+
+<ion-item no-lines *ngIf="base64Image == ''">
+
+  <ion-card>
+    <img src="../../assets/imgs/sem-foto.jpg" alt="">
+    <div class="centro">
+
+      <button  ion-fab block (click)="presentActionSheet()" color="danger">
+        <ion-icon name="ios-images-outline"></ion-icon>
+      </button>
+    </div>
+  
+  </ion-card>
+
+  
+
+</ion-item>
+
+</ion-content>

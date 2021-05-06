@@ -1,0 +1,26 @@
+page-categoria-insert {
+
+    .ion-option {
+        margin-left: 20px !important;
+    }
+    .select-text {
+        font-size: 16px;
+        margin-left: 9px;
+        font-family: Open Sans !important;
+        color: rgb(248, 244, 1);
+    }
+
+    ion-input{
+        text-transform: uppercase !important;
+        color: rgb(255, 255, 255);
+        font-size: larger;
+    }
+
+    .text-input-md {
+        margin: 13px 8px;
+        padding: 0;
+        width: calc(100% - 8px - 8px);
+        text-transform: uppercase;
+    }
+
+}

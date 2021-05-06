@@ -1,0 +1,44 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-title>Categorias</ion-title>
+    <ion-buttons end>
+
+      <button ion-button icon-only  (click)="cadastrar()">
+        <ion-icon name="checkmark"></ion-icon>
+      </button>
+    </ion-buttons>
+  </ion-navbar>
+</ion-header>
+
+
+
+<ion-content>
+  
+  <ion-list>
+    <ion-item>
+      <img style="max-width: 70%; margin-left: 40px;" src="../../assets/imgs/sem-foto.jpg"
+        *ngIf="base64Image == ''">
+      <img style="max-width: 70%; margin-left: 50px;" src="{{base64Image}}" *ngIf="base64Image != ''">
+    
+
+    </ion-item>
+  </ion-list>
+  
+  <div>
+    <button ion-button block (click)="presentActionSheet()" color="danger">Upload</button>
+  </div>
+
+  <ion-grid>
+    <ion-row>
+      <ion-col col-12>
+        <ion-item>
+          <ion-input placeholder="Digite..." [(ngModel)]="nome" type="text"></ion-input>
+        </ion-item>
+
+      </ion-col>
+
+    </ion-row>
+
+  </ion-grid>
+
+</ion-content>

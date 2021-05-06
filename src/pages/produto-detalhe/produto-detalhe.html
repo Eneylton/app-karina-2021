@@ -1,0 +1,38 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-title>{{nome}}</ion-title>
+  </ion-navbar>
+</ion-header>
+
+
+  <ion-content padding class="buttons-components-page">
+    <ion-card>
+      <ion-card-content>
+        <img src="{{url+foto}}" style="width: auto; height: auto;" />
+      </ion-card-content>
+  
+      <ion-item>
+       <span class="texto">{{barra}}</span>
+       <ion-badge item-end>{{codigo}}</ion-badge>
+      </ion-item>
+    </ion-card>
+  
+    <ion-list>
+
+      <ion-item>
+        <button ion-button item-start outline color="light" style="font-size: 15px;">VCOMPRA: {{valor_compra | currency: 'BRL'}}</button>
+        <button ion-button item-end outline color="laranja" style="font-size: 15px;">VENDA: {{valor_venda | currency: 'BRL'}}</button>
+      </ion-item>
+
+      <ion-item>
+        Aplicação:<p></p>
+       <h3>{{aplicacao}}</h3>
+        <button ion-button item-end outline icon-end color="verde">
+          QUANTIDADE: {{estoque}}
+          <ion-icon name='star'></ion-icon>
+        </button>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+
+

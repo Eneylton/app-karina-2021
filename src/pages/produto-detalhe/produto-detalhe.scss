@@ -1,0 +1,47 @@
+page-produto-detalhe {
+  .toolbar-title-md {
+    padding: 0 10px !important;
+    text-transform: uppercase !important;
+    font-size: 1.3rem !important;
+    font-weight: 100 !important;
+    color: #9eff01;
+}
+
+    .buttons-components-page {
+      
+        ion-card {
+          margin-bottom: 2em;
+        }
+      
+        ion-card-content {
+          background-color: #F4F5F8;
+        }
+      
+        ion-card img {
+          width: auto;
+          height: 44px;
+          display: block;
+          margin: 20px auto;
+        }
+      
+      }
+
+     
+
+    .ion-option {
+        margin-left: 20px !important;
+    }
+    .select-text {
+        font-size: 14px;
+        margin-left: 9px;
+        font-family: Open Sans !important;
+        color: rgb(13, 228, 13);
+    }
+
+    .texto{
+        font-size: 50px !important;
+        font-family: buda !important;
+        
+    }
+
+}

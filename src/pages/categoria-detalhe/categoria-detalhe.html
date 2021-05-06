@@ -1,0 +1,44 @@
+<ion-header>
+  <ion-navbar color="primary">
+    <ion-title>Categorias</ion-title>
+    <ion-buttons end>
+
+      <button ion-button icon-only  (click)="conta()" >
+        <i class="fas fa-house-user"></i>
+      </button>
+
+      <button ion-button icon-only  (click)="produtos()" >
+        <i class="fas fa-box-open"></i>
+      </button>
+    </ion-buttons>
+
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+  <ion-card>
+
+    <img src="{{url+foto}}" >
+
+    <ion-card-content>
+      <ion-card-title>
+       <h1>{{descricao}}</h1> 
+      </ion-card-title>
+      <p>
+        Produtos excluiso do lojão do carro contato (98) 981581962
+      </p>
+    </ion-card-content>
+
+    <ion-item>
+      
+      <h2 class="texto">898453{{id}}</h2>
+      
+      <ion-badge item-end>REF: 778899{{id}}</ion-badge>
+    </ion-item>
+
+    
+
+  </ion-card>
+
+</ion-content>

@@ -1,0 +1,24 @@
+<ion-header no-border>
+  <ion-navbar transparent>
+    <ion-title>Home</ion-title>
+  </ion-navbar>
+</ion-header>
+
+<ion-content>
+
+
+  <ion-list style="margin-top: 20px;" [virtualScroll]="produtos">
+    <ion-item *virtualItem="let item" >
+      <ion-thumbnail item-start>
+                <img *ngIf="item.foto == ''" src="../../assets/imgs/sem-img.png" >
+                <img *ngIf="item.foto != ''" src="{{url+item.foto}}" >
+      </ion-thumbnail>
+    
+      <h2 style="font-size:large; text-transform: uppercase;">{{item.nome}} </h2>
+      <p>{{item.codigo}}</p>
+
+      </ion-item>
+  
+  </ion-list>
+
+</ion-content>
